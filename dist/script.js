@@ -17,3 +17,14 @@ document.addEventListener('keydown', event => {
     menuButton.focus();
   }
 });
+const updatesForm = document.querySelector('#updates-form');
+const updatesStatus = document.querySelector('#updates-status');
+if (updatesForm) {
+  updatesForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const email = new FormData(updatesForm).get('email');
+    localStorage.setItem('buildDayUpdatesRequest', String(email));
+    updatesStatus.textContent = 'Your request is saved on this device. The organizer still needs to connect the live update list.';
+    updatesForm.reset();
+  });
+}
