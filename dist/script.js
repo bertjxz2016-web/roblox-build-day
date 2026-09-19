@@ -28,3 +28,14 @@ if (updatesForm) {
     updatesForm.reset();
   });
 }
+const schoolForm = document.querySelector('#school-form');
+const schoolStatus = document.querySelector('#school-status');
+if (schoolForm) {
+  schoolForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const data = new FormData(schoolForm);
+    localStorage.setItem('buildDaySchoolRequest', JSON.stringify({ email: data.get('email'), role: data.get('role') }));
+    schoolStatus.textContent = 'Your inquiry is saved on this device. The organizer still needs to connect the live school-information inbox.';
+    schoolForm.reset();
+  });
+}
